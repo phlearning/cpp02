@@ -6,7 +6,7 @@
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:50:23 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/07 15:26:56 by pvong            ###   ########.fr       */
+/*   Updated: 2023/11/08 11:11:43 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 // }
 
 int main() {
-	Point a(0, 0), b(3, 0), c(1.5f, 1.5f), p(1, 1);
+	Point a(1, 1), b(5, 1), c(3, 4), p(3.77f, 2.68f);
 	// std::cout << "Enter all the co-ordinates of triangle : ";
 	// std::cin >> a.x >> a.y >> b.x >> b.y >> c.x >> c.y;
 

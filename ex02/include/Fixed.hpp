@@ -6,7 +6,7 @@
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:25:15 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/07 13:58:06 by pvong            ###   ########.fr       */
+/*   Updated: 2023/11/08 14:09:45 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #define FIXED_HPP
 
 #include <iostream>
+
+#ifndef SHOWMSG
+#define SHOWMSG 0
+#endif
 
 #define RESET "\033[0m"
 #define BLACK "\033[30m"              /* Black */

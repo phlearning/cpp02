@@ -6,11 +6,11 @@
 #    By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 13:50:29 by pvong             #+#    #+#              #
-#    Updated: 2023/11/07 14:51:58 by pvong            ###   ########.fr        #
+#    Updated: 2023/11/08 14:09:07 by pvong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Fixed
+NAME = bsp
 
 # Compilation 
 CXX = g++
@@ -44,8 +44,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 $(NAME): $(OBJ)
 	$(CXX) $(INC) $(CXXFLAGS) -o $@ $^
 
+show: CXXFLAGS += -DSHOWMSG=1
+show: clean $(NAME) run
+
 run: $(NAME)
 	./$(NAME)
+	
 
 clean:
 	rm -rf $(OBJ_DIR)

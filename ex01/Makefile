@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/06 16:22:47 by pvong             #+#    #+#              #
-#    Updated: 2023/11/08 14:10:03 by pvong            ###   ########.fr        #
+#    Created: 2023/11/06 14:17:57 by pvong             #+#    #+#              #
+#    Updated: 2023/11/08 14:10:58 by pvong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 $(NAME): $(OBJ)
 	$(CXX) $(INC) $(CXXFLAGS) -o $@ $^
 
-show: CXXFLAGS += -DSHOWMSG=1
-show: clean $(NAME) run
+noshow: CXXFLAGS += -DSHOWMSG=0
+noshow: clean $(NAME) run
 
 run: $(NAME)
 	./$(NAME)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 13:50:34 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/08 14:09:19 by pvong            ###   ########.fr       */
+/*   Created: 2023/11/06 14:17:42 by pvong             #+#    #+#             */
+/*   Updated: 2023/11/08 11:49:27 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 
 #ifndef SHOWMSG
-#define SHOWMSG 0
+#define SHOWMSG 1
 #endif
 
 #define RESET "\033[0m"
@@ -44,7 +44,6 @@ private:
     static int const _fractionalBits;
 
 public:
-    // Canonical Form
     Fixed(void);
     Fixed(int const value);
     Fixed(float const value);
@@ -53,37 +52,10 @@ public:
 
     Fixed &operator=(Fixed const &rhs);
 
-    // Comparison operators
-    bool operator>(Fixed const &rhs) const;
-    bool operator<(Fixed const &rhs) const;
-    bool operator>=(Fixed const &rhs) const;
-    bool operator<=(Fixed const &rhs) const;
-    bool operator==(Fixed const &rhs) const;
-    bool operator!=(Fixed const &rhs) const;
-
-    // Arithmetic operators
-    Fixed operator+(Fixed const &rhs);
-    Fixed operator-(Fixed const &rhs);
-    Fixed operator*(Fixed const &rhs);
-    Fixed operator/(Fixed const &rhs);
-
-    // Increment / Decrement operators
-    Fixed &operator++(void); // Pre-increment operator
-    Fixed operator++(int); // Post-increment operator
-    Fixed &operator--(void); // Pre-increment operator
-    Fixed operator--(int); // Post-increment operator
-
-    // Member functions
     int getRawBits(void) const;
     void setRawBits(int const raw);
     float toFloat(void) const;
     int toInt(void) const;
-
-    // Static Member functions
-    static Fixed &min(Fixed &a, Fixed &b);
-    static Fixed const &min(Fixed const &a, Fixed const &b);
-    static Fixed &max(Fixed &a, Fixed &b);
-    static Fixed const &max(Fixed const &a, Fixed const &b);
 };
 
 std::ostream &operator<<(std::ostream &o, Fixed const &f);

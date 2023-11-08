@@ -6,7 +6,7 @@
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:25:21 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/07 13:57:09 by pvong            ###   ########.fr       */
+/*   Updated: 2023/11/08 11:48:47 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,40 @@
 /* --------------------------- Default constructor -------------------------- */
 
 Fixed::Fixed(void) : _value(0) {
-    std::cout << GREEN << "Default constructor called" << RESET << std::endl;
+    if (SHOWMSG)
+        std::cout << GREEN << "Default constructor called" << RESET << std::endl;
     return;
 }
 
 /* --------------------------- My int constructor --------------------------- */
 
 Fixed::Fixed(int const value) {
-    std::cout << BOLDGREEN << "Int constructor called" << RESET << std::endl;
+    if (SHOWMSG)
+        std::cout << BOLDGREEN << "Int constructor called" << RESET << std::endl;
     this->_value = value << this->_fractionalBits;
 }
 
 /* -------------------------- My float constructor -------------------------- */
 
 Fixed::Fixed(float const value) {
-    std::cout << BOLDGREEN << "Float constructor called" << RESET << std::endl;
+    if (SHOWMSG)
+        std::cout << BOLDGREEN << "Float constructor called" << RESET << std::endl;
     this->_value = (int)(roundf(value * (1 << this->_fractionalBits)));
 }
 
 /* ---------------------------- Copy constructor ---------------------------- */
 
 Fixed::Fixed(Fixed const &src) : _value(src._value) {
-    std::cout << YELLOW << "Copy constructor called" << RESET << std::endl;
+    if (SHOWMSG)
+        std::cout << YELLOW << "Copy constructor called" << RESET << std::endl;
     return;
 }
 
 /* ------------------------ Copy Assignement Operator ----------------------- */
 
 Fixed &Fixed::operator=(Fixed const &rhs) {
-    std::cout << BOLDYELLOW << "Copy assignment operator called" << RESET << std::endl;
+    if (SHOWMSG)
+        std::cout << BOLDYELLOW << "Copy assignment operator called" << RESET << std::endl;
     this->_value = rhs._value;
     return *this;
 }
@@ -57,7 +62,8 @@ Fixed &Fixed::operator=(Fixed const &rhs) {
 /* ------------------------------- Destructor ------------------------------- */
 
 Fixed::~Fixed(void) {
-    std::cout << RED << "Destructor called" << RESET << std::endl;
+    if (SHOWMSG)
+        std::cout << RED << "Destructor called" << RESET << std::endl;
     return;
 }
 
