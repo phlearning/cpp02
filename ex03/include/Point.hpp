@@ -6,7 +6,7 @@
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:09:54 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/08 11:32:24 by pvong            ###   ########.fr       */
+/*   Updated: 2023/11/10 13:33:59 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define POINT_HPP
 
 #include "Fixed.hpp"
+
+#define MSG_SEP "===================="
 
 class Point {
 
@@ -37,6 +39,8 @@ public:
 };
 
 float area(Point a, Point b, Point c);
-bool isInside(Point a, Point b, Point c, Point p);
+bool bsp(Point const a, Point const b, Point const c, Point const p);
+void handleCtrlD(void);
+void setPoints(std::string pointName, float *x, float *y);
 
 #endif

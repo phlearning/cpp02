@@ -6,42 +6,68 @@
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:50:23 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/08 11:11:43 by pvong            ###   ########.fr       */
+/*   Updated: 2023/11/10 13:34:12 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include "Point.hpp"
 #include <iostream>
+#include <string>
 
-// int main(void) {
-//     Fixed a;
-//     Fixed const b(Fixed(5.05f) * Fixed(2));
+void handleCtrlD(void) {
 
-//     std::cout << "a: " << a << std::endl;
-//     std::cout << "++a: " << ++a << std::endl;
-//     std::cout << "a: " << a << std::endl;
-//     std::cout << "a++: " << a++ << std::endl;
-//     std::cout << "a: " << a << std::endl;
-//     std::cout << "b: " << b << std::endl;
-//     std::cout << "Fixed::max(a, b): " << Fixed::max(a, b) << std::endl;
-//     return 0;
-// }
+    if (std::cin.eof()) {
+        std::cout << "End of input. Exiting." << std::endl;
+        exit(0);
+    }
+}
+
+void setPoints(std::string pointName, float *x, float *y)
+{
+
+	std::cout << BOLDWHITE << pointName << RESET << std::endl;
+	std::cout << BOLDBLACK << MSG_SEP << RESET << std::endl;
+	std::cout << "Set " << BLUE << pointName << RESET << ".x: ";
+	while (!(std::cin >> *x)) {
+		handleCtrlD();
+		std::cout << RED << "Error: Invalid number" << RESET << std::endl;
+		std::cin.clear();
+		std::cin.ignore();
+		std::cout << "Set " << BLUE << pointName << RESET << ".x: ";
+	}
+	std::cout << "Set " << BLUE << pointName << RESET << ".y: ";
+	while (!(std::cin >> *y)) {
+		handleCtrlD();
+		std::cout << RED << "Error: Invalid number" << RESET << std::endl;
+		std::cin.clear();
+		std::cin.ignore();
+		std::cout << "Set " << BLUE << pointName << RESET << ".y: ";
+	}
+	std::cout << "Point "<< BOLDWHITE << pointName << CYAN << "(" << *x << ", " << *y << ")" << RESET << " has been set" << std::endl;
+	std::cout << BOLDBLACK << MSG_SEP << RESET << std::endl;
+	std::cout << std::endl;
+}
 
 int main() {
-	Point a(1, 1), b(5, 1), c(3, 4), p(3.77f, 2.68f);
-	// std::cout << "Enter all the co-ordinates of triangle : ";
-	// std::cin >> a.x >> a.y >> b.x >> b.y >> c.x >> c.y;
 
-	// std::cout << "Enter the co-ordinates of point : ";
-	// std::cin >> p.x >> p.y;
+	float x1, y1, x2, y2, x3, y3, x4, y4;
 
-	bool ans = isInside(a, b, c, p);
+	setPoints("A", &x1, &y1);
+	setPoints("B", &x2, &y2);
+	setPoints("C", &x3, &y3);
+	setPoints("D", &x4, &y4);
+	Point a(x1, y1), b(x2, y2), c(x3, y3), p(x4, y4);
+
+	// Point a(1, 1), b(2, 4), c(3, 1), p(3.57f, 2.86f);
+	// Point a(1, 1), b(2, 4), c(3, 1), p(2.29f, 2.34f);
+
+	bool ans = bsp(a, b, c, p);
 
 	if(ans) {
-		std::cout << "The point lies inside the triangle.";
+		std::cout << GREEN << "Result: " << RESET << "The point lies inside the triangle.";
 	} else {
-		std::cout << "The point lies outside the triangle.";
+		std::cout << GREEN << "Result: " << RESET << "The point lies outside the triangle.";
 	}
 	std::cout << std::endl;
 

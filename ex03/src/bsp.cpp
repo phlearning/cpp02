@@ -6,7 +6,7 @@
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:51:35 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/08 14:20:28 by pvong            ###   ########.fr       */
+/*   Updated: 2023/11/10 12:55:50 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,14 @@ float area(Point a, Point b, Point c) {
     return (res >= 0) ? res : -res;
 }
 
-bool isInside(Point a, Point b, Point c, Point p) {
-    const float eps = 0.00001f;
+bool bsp(Point const a, Point const b, Point const c, Point const p) {
+
     float a1 = area(a, b, p);
     float a2 = area(a, c, p);
     float a3 = area(b, c, p);
     float big = area(a, b, c);
 
-    float resultArea = big - (a1 + a2 + a3);
-    if (resultArea < 0) {
-        resultArea = -resultArea;
-    }
+    float resultArea = a1 + a2 + a3;
 
-    return (resultArea < eps);
+    return (resultArea == big);
 }
